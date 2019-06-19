@@ -155,3 +155,26 @@ i {
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+input {
+	position: absolute;
+	width: 300px;
+	left: 50%;
+	bottom: 5%;
+	transform: translateX(-50%);
+	color: transparent;
+	background: transparent;
+	text-shadow: 0 0 0 gray;
+	border-radius: 6px;
+	font-family: Lato;
+	font-size: 20px;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-weight: 300;
+	text-align: center;
+}
+
+input:focus {
+	outline: none;
+	cursor: default;
+}

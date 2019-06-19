@@ -14,6 +14,8 @@ const RESET_VALUE = 2;
 let scores = [0, 0];
 let activePlayer = 0;
 let current = 0;
+let limitElement = document.getElementById("limitInput");
+let limitValue = 0;
 const diceElement1 = document.querySelector('.dice1');
 const diceElement2 = document.querySelector('.dice2');
 
@@ -50,7 +52,7 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
     current += total;
     document.getElementById('current-'+activePlayer).textContent = current;
 
-    if (scores[activePlayer] + current >= 20) {
+    if (scores[activePlayer] + current >= (limitValue ? +limitValue : 100)) {
       alert(`ИГРОК ${activePlayer + 1} ВЫИГРАЛ!!!`);
     }
     
@@ -77,4 +79,8 @@ document.querySelector('.btn-hold').addEventListener('click', function() {
 
 document.querySelector('.btn-new').addEventListener('click', function() {
   initGame();
+});
+
+limitElement.addEventListener('change', function() {
+	limitValue = this.value;
 });

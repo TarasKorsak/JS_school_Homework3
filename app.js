@@ -14,30 +14,44 @@ const RESET_VALUE = 1;
 let scores = [0, 0];
 let activePlayer = 0;
 let current = 0;
-const diceElement = document.querySelector('.dice');
+const diceElement1 = document.querySelector('.dice1');
+const diceElement2 = document.querySelector('.dice2');
+
+const dicesHide = () => {
+	diceElement1.style.display = 'none';
+	diceElement2.style.display = 'none';
+}
+
+const dicesShow = () => {
+	diceElement1.style.display = 'block';
+	diceElement2.style.display = 'block';
+}
 
 const initGame = () => {
   document.querySelector('#current-0').textContent = 0;
   document.querySelector('#current-1').textContent = 0;
   document.querySelector('#score-0').textContent = 0;
   document.querySelector('#score-1').textContent = 0;
-  diceElement.style.display = 'none';
+	dicesHide();
 }
 
 initGame();
 
 document.querySelector('.btn-roll').addEventListener('click', function() {
-  let dice = Math.floor(Math.random() * 6) + 1;
+  let dice1 = Math.floor(Math.random() * 6) + 1;
+  let dice2 = Math.floor(Math.random() * 6) + 1;
+	let total = dice1 + dice2;
 
-  diceElement.src = `dice-${dice}.png`;
-  diceElement.style.display = 'block';
-
-  if (dice !== RESET_VALUE) {
-    current += dice;
+  diceElement1.src = `dice-${dice1}.png`;
+  diceElement2.src = `dice-${dice2}.png`;
+	dicesShow();
+	console.log(dice1 + "  " + dice2);
+  if ( (dice1 !== RESET_VALUE) && (dice2 !== RESET_VALUE)) {
+    current += total;
     document.getElementById('current-'+activePlayer).textContent = current;
 
     if (scores[activePlayer] + current >= 20) {
-      alert(`Player ${activePlayer} won!!!`);
+      alert(`ИГРОК ${activePlayer + 1} ВЫИГРАЛ!!!`);
     }
     
   } else {
@@ -50,7 +64,7 @@ const changePlayer = () => {
   document.getElementById('current-'+activePlayer).textContent = 0;
   document.querySelector(`.player-${activePlayer}-panel`).classList.toggle('active');
   activePlayer = +!activePlayer;
-  diceElement.style.display = 'none';
+  dicesHide();
   document.querySelector(`.player-${activePlayer}-panel`).classList.toggle('active');
 }
 

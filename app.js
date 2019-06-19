@@ -29,9 +29,32 @@ const dicesShow = () => {
 	diceElement2.style.display = 'block';
 }
 
+function Gamer(name = "") {
+	this.name = name;
+	this.score = 0;
+}
+
+Gamer.prototype.getScore = function() {
+	return this.score;
+}
+Gamer.prototype.setScore = function() {
+	return ++this.score;
+}
+Gamer.prototype.resetScore = function() {
+	return this.score = 0;
+}
+
+const player1 = new Gamer();
+const player2 = new Gamer();
+
+player1.name = prompt("Введите имя первого игрока", "Игрок1");
+player2.name = prompt("Введите имя второго игрока", "Игрок2");
+
 const initGame = () => {
   document.querySelector('#current-0').textContent = 0;
-  document.querySelector('#current-1').textContent = 0;
+  document.querySelector('#current-0').textContent = 0;
+  document.querySelector('#name-0').textContent = player1.name;
+  document.querySelector('#name-1').textContent = player2.name;
   document.querySelector('#score-0').textContent = 0;
   document.querySelector('#score-1').textContent = 0;
 	dicesHide();
@@ -46,14 +69,16 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 
   diceElement1.src = `dice-${dice1}.png`;
   diceElement2.src = `dice-${dice2}.png`;
+	
 	dicesShow();
 	console.log(dice1 + "  " + dice2);
-  if ((dice1 !== RESET_VALUE) && (dice2 !== RESET_VALUE) && (dice1 !== dice2)) {
+	
+	if ((dice1 !== RESET_VALUE) && (dice2 !== RESET_VALUE) && (dice1 !== dice2)) {
     current += total;
     document.getElementById('current-'+activePlayer).textContent = current;
 
     if (scores[activePlayer] + current >= (limitValue ? +limitValue : 100)) {
-      alert(`ИГРОК ${activePlayer + 1} ВЫИГРАЛ!!!`);
+			alert(`ИГРОК ${activePlayer ? player2.name : player1.name} ВЫИГРАЛ!!!`);
     }
     
   } else {

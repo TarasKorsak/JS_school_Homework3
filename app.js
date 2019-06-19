@@ -29,7 +29,7 @@ const dicesShow = () => {
 	diceElement2.style.display = 'block';
 }
 
-function Gamer(name = "") {
+function Gamer(name = "БезИмени") {
 	this.name = name;
 	this.score = 0;
 }
@@ -49,6 +49,13 @@ const player2 = new Gamer();
 
 player1.name = prompt("Введите имя первого игрока", "Игрок1");
 player2.name = prompt("Введите имя второго игрока", "Игрок2");
+
+if (!localStorage[player1.name]) {
+	localStorage.setItem(player1.name, 0);
+};
+if (!localStorage.getItem[player2.name]) {
+	localStorage.setItem(player2.name, 0);
+};
 
 const initGame = () => {
   document.querySelector('#current-0').textContent = 0;
@@ -72,13 +79,16 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
 	
 	dicesShow();
 	console.log(dice1 + "  " + dice2);
-	
+
 	if ((dice1 !== RESET_VALUE) && (dice2 !== RESET_VALUE) && (dice1 !== dice2)) {
     current += total;
     document.getElementById('current-'+activePlayer).textContent = current;
 
     if (scores[activePlayer] + current >= (limitValue ? +limitValue : 100)) {
-			alert(`ИГРОК ${activePlayer ? player2.name : player1.name} ВЫИГРАЛ!!!`);
+			let winner = activePlayer ? player2.name : player1.name;
+			let numberOfWins = +localStorage.getItem(winner) + 1;
+			localStorage.setItem(winner, numberOfWins);
+			alert(`ИГРОК ${winner} ВЫИГРАЛ!!!`);
     }
     
   } else {
@@ -108,4 +118,20 @@ document.querySelector('.btn-new').addEventListener('click', function() {
 
 limitElement.addEventListener('change', function() {
 	limitValue = this.value;
+});
+
+document.querySelector('#winnersList').addEventListener('click', function() {
+	let arr = [];
+  for (var i = 0; i < localStorage.length; i++) { 
+		let key = localStorage.key(i);
+		arr.push([key, localStorage.getItem(key)]);
+	};
+	arr.sort(function(a, b) {
+    return b[1] - a[1];
+	});
+	let list = "";
+	for (var i = 0; i < arr.length; i++) { 
+		list += "Игрок " + arr[i][0] + " победил " + arr[i][1] + " раз\n";
+	};
+	alert(list);
 });

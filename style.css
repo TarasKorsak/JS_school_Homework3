@@ -136,6 +136,7 @@ i {
 .btn-new { top: 45px;}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
+.btn-winners { top: 517px;}
 
 .dice {
     position: absolute;
@@ -160,7 +161,7 @@ input {
 	position: absolute;
 	width: 300px;
 	left: 50%;
-	bottom: 5%;
+	bottom: 3%;
 	transform: translateX(-50%);
 	color: transparent;
 	background: transparent;

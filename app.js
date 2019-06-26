@@ -78,7 +78,6 @@ document.querySelector('.btn-roll').addEventListener('click', function() {
   diceElement2.src = `dice-${dice2}.png`;
 	
 	dicesShow();
-	console.log(dice1 + "  " + dice2);
 
 	if ((dice1 !== RESET_VALUE) && (dice2 !== RESET_VALUE) && (dice1 !== dice2)) {
     current += total;

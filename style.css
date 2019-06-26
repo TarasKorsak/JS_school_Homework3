@@ -136,15 +136,46 @@ i {
 .btn-new { top: 45px;}
 .btn-roll { top: 403px;}
 .btn-hold { top: 467px;}
+.btn-winners { top: 517px;}
 
 .dice {
     position: absolute;
     left: 50%;
     top: 178px;
-    transform: translateX(-50%);
     height: 100px;
     box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.10);
+	}
+
+.dice1 { 
+	transform: translateX(-110%);
+}
+
+.dice2 { 
+	transform: translateX(10%);
 }
 
 .winner { background-color: #f7f7f7; }
 .winner .player-name { font-weight: 300; color: #EB4D4D; }
+
+input {
+	position: absolute;
+	width: 300px;
+	left: 50%;
+	bottom: 3%;
+	transform: translateX(-50%);
+	color: transparent;
+	background: transparent;
+	text-shadow: 0 0 0 gray;
+	border-radius: 6px;
+	font-family: Lato;
+	font-size: 20px;
+	text-transform: uppercase;
+	cursor: pointer;
+	font-weight: 300;
+	text-align: center;
+}
+
+input:focus {
+	outline: none;
+	cursor: default;
+}

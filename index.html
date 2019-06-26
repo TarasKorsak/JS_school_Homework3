@@ -12,7 +12,7 @@
     <body>
         <div class="wrapper clearfix">
             <div class="player-0-panel active">
-                <div class="player-name" id="name-0">Игрок 1</div>
+                <div class="player-name" id="name-0"></div>
                 <div class="player-score" id="score-0">43</div>
                 <div class="player-current-box">
                     <div class="player-current-label">Текущий</div>
@@ -21,7 +21,7 @@
             </div>
             
             <div class="player-1-panel">
-                <div class="player-name" id="name-1">Игрок 2</div>
+                <div class="player-name" id="name-1"></div>
                 <div class="player-score" id="score-1">72</div>
                 <div class="player-current-box">
                     <div class="player-current-label">Текущий</div>
@@ -32,8 +32,11 @@
             <button class="btn-new"><i class="ion-ios-plus-outline"></i>Новая игра</button>
             <button class="btn-roll"><i class="ion-ios-loop"></i>Бросок</button>
             <button class="btn-hold"><i class="ion-ios-download-outline"></i>Сохранить</button>
+						<button class="btn-winners" id="winnersList">Победители</button>
             
-            <img src="dice-5.png" alt="Dice" class="dice">
+            <img src="dice-5.png" alt="Dice" class="dice dice1">
+						<img src="dice-5.png" alt="Dice" class="dice dice2">
+						<input type="text" placeholder="Введите лимит игры" value="" id="limitInput">
         </div>
         
         <script src="app.js"></script>
